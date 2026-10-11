@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ===== JJK Theme Tokens ===== */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-surface-2: #1a1a24;
+  --color-ink: #e8e8e8;
+  --color-muted: #6b6b7b;
+  --color-line: rgba(123, 44, 191, 0.2);
+
+  --color-cursed: #7b2cbf;
+  --color-blood: #e63946;
+  --color-six-eyes: #00b4d8;
+  --color-gold: #ffb703;
+
+  --font-display: var(--font-russo), system-ui, sans-serif;
+  --font-jp: var(--font-noto-jp), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ===== Base ===== */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(123, 44, 191, 0.4);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7b2cbf, #e63946);
+  border-radius: 0;
+}
+/* ===== Animations ===== */
+@keyframes cursed-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(1.08); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+.animate-cursed-pulse {
+  animation: cursed-pulse 8s ease-in-out infinite;
+}
+/* ===== JJK Background Animations ===== */
+
+/* Rotating domain ring */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+/* Cursed tendril wave */
+@keyframes tendril-flow {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.3; }
+  50%      { transform: translateY(-30px) scaleY(1.15); opacity: 0.7; }
+}
+
+/* Falling embers */
+@keyframes ember-fall {
+  0%   { transform: translateY(-20vh) translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(105vh) translateX(30px); opacity: 0; }
+}
+
+/* Floating kanji drift */
+@keyframes kanji-drift {
+  0%   { transform: translateY(0) rotate(-3deg); opacity: 0.04; }
+  50%  { transform: translateY(-40px) rotate(3deg); opacity: 0.08; }
+  100% { transform: translateY(0) rotate(-3deg); opacity: 0.04; }
+}
+
+/* Six eyes pulse */
+@keyframes eyes-pulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(1.1); }
+}
+
+/* Cursed flame flicker */
+@keyframes flame-flicker {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  25%      { opacity: 0.8; transform: scale(1.03); }
+  50%      { opacity: 0.6; transform: scale(0.98); }
+  75%      { opacity: 0.9; transform: scale(1.02); }
 }
