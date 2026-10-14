@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Russo_One, Noto_Sans_JP, Inter, JetBrains_Mono } from "next/font/google";
+import { Russo_One, Noto_Sans_JP, Inter, JetBrains_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 
 // ===== Fonts setup =====
@@ -31,12 +31,17 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-// ===== Site metadata (browser tab এ দেখাবে) =====
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  variable: "--font-caveat",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Portfolio — Jujutsu Kaisen",
   description: "JJK-themed full stack developer portfolio",
 };
-
 // ===== Root layout =====
 export default function RootLayout({
   children,
@@ -46,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${russo.variable} ${notoJp.variable} ${inter.variable} ${mono.variable}`}
+      className={`${russo.variable} ${notoJp.variable} ${inter.variable} ${mono.variable} ${caveat.variable}`}
     >
       <body className="font-sans antialiased">{children}</body>
     </html>

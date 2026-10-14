@@ -185,9 +185,10 @@ export default function Hero() {
             <div className="relative mt-4 aspect-[4/5] overflow-hidden border border-line bg-black/40">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={profile.avatar}
-                alt={profile.name}
-                className="h-full w-full object-cover grayscale-[0.15] transition-all duration-500 hover:grayscale-0"
+  src={profile.heroImage}
+  alt={profile.name}
+  className="h-full w-full object-cover grayscale-[0.15] transition-all duration-500 hover:grayscale-0"
+                
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                 }}
